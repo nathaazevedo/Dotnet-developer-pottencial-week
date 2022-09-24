@@ -55,7 +55,7 @@ public class PersonController : ControllerBase
     [HttpPut("{id}")]
     public ActionResult<Object> Update([FromRoute] int id, [FromBody] Person person)
     {
-        var result = _context.Persons.SingleOrDefault(e => e.Id == id);
+        var result = _context.Persons.AsNoTracking().SingleOrDefault(e => e.Id == id);
 
         if (result is null)
         {
